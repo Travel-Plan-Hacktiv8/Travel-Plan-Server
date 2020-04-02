@@ -6,7 +6,7 @@ const apiRoute = require('./api')
 const authentication = require('../middlewere/authentication')
 
 router.use('/user', userRouter)
-router.use('/', apiRoute)
+router.use('/api', apiRoute)
 router.use(authentication)
 router.use('/travel', travelRoute)
 
