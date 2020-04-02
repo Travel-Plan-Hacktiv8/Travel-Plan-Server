@@ -6,6 +6,7 @@ class ApiController {
         console.log(city)
         let weather = ''
         let detikNews = ''
+        let holiday = ''
         axios.get(`https://api.weatherbit.io/v2.0/current?city=${city}&key=${process.env.APIKEY}`)
             .then(result => {
                 const {data} = result
@@ -16,9 +17,17 @@ class ApiController {
             .then(result => {
                 const {data} = result
                 detikNews = data
+                let date = new Date()
+                let year = date.getFullYear()
+                return axios(`https://date.nager.at/api/v2/publicholidays/${year}/ID`)
+                
+            })
+            .then(({data}) => {
+                holiday = data
                 return res.status(200).json({
                     Weather: weather,
-                    News: detikNews
+                    News: detikNews,
+                    holiday
                 })
             })
             .catch(err => res.status(500).json(err))
