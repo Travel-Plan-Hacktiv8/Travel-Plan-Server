@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Travel.associate = function (models) {
     // associations can be defined here
-    Todo.belongsTo(models.User)
+    Travel.belongsTo(models.User)
   };
   return Travel;
 };
