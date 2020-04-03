@@ -2,6 +2,6 @@ const express = require('express')
 const router = express.Router()
 const apiController= require('../controllers/apiController')
 
-router.get('/:country', apiController.findContentNews)
-router.get('/:city', apiController.findContentWeather)
+router.get('/news/:country', apiController.findContentNews)
+router.get('/weather/:city', apiController.findContentWeather)
 module.exports = router
