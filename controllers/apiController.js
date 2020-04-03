@@ -24,7 +24,16 @@ class ApiController {
         })
         .catch(err => res.status(500).json(err))
     }
-        
+    static holidayDate(req, res, next) {
+        let date = new Date()
+        let year = date.getFullYear()
+        axios.get(`https://date.nager.at/api/v2/publicholidays/${year}/ID`)
+        .then(({ data }) => {
+            // console.log(data);
+            res.status(200).json(data)
+        })
+        .catch(next)
+    }
 }
 
 module.exports = ApiController
