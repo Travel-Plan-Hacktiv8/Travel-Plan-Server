@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const TravelController = require('../controllers/travelController')
+const authorization = require('../middlewere/authorization')
 
 router.post('/', TravelController.add)
 router.get('/', TravelController.display)
